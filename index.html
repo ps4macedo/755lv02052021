@@ -1,0 +1,93 @@
+<html manifest="Cache.manifest">
+<head>
+	<title>PS4MACEDO 7.55 LIGHT v02052021</title>
+</head>
+<style>
+    body{
+		background-color:#000024;
+		background-image:url(bg1.png);
+		background-attachment: fixed;
+		background-size:100%;
+		background-repeat:no-repeat;
+		font-family: system-ui;
+		color:#6089f6;
+		text-align:center;
+		font-size:28px;
+	}	
+</style>
+<body id=cache onload="go();">
+<script>
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.cache.innerHTML="<br><br><br><br><br><br><br><br>Instalando Cache Offline: <font color=\"#ee596f\">" + Percent + "%</font>"};
+function DisplayCacheProgress(){setTimeout(function(){window.cache.innerHTML="<br><br><br><br><br><br><br><br>Cache <font color=\"#ee596f\">instalada</font> com sucesso!!!";localStorage.isPrbCached=true;},1000);setTimeout(function(){window.cache.innerHTML="<br><br><br><br><br><br><br><br>Saia, <font color=\"#ee596f\">desabilite a REDE</font> e retorne ao NAVEGADOR.";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+<script>
+function print(){}
+
+var scriptCode = '';
+
+function preloadScripts(lst)
+{
+    for(var i = 0; i < lst.length; i++)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', lst[i], false);
+        xhr.send('');
+        scriptCode += xhr.responseText + '\n';
+    }
+}
+
+function getHashParams()
+{
+    var ans = {};
+    var p = document.location.hash.substr(1).split("&");
+    for(var i = 0; i < p.length; i++)
+    {
+        var kv = p[i].split('=');
+        var k = kv.shift();
+        ans[k] = decodeURIComponent(kv.join('='));
+    }
+    return ans;
+}
+
+function done()
+{
+    if(main_ret == 0 || main_ret == 179)
+    {
+       alert("\n \n P R O N T O! Goldhen v1.1 ativado.\n\n A T E N Ç Ã O ! ! ! Aguarde as mensagens.\n  Depois pressione o botão \"CIRCULO\" (VERMELHO) até sair do navegador ou guia.");
+       read_ptr_at(0);
+    }
+    else
+        alert("Jailbreak FALHOU! Reinicie o PS4 sem sair dessa tela, usando o botão \"PS\" \n e tente novamente.");
+}
+
+window.midExploit = function()
+{
+    var scripts = ['blob.js', 'jb.js'];
+    scripts.push('mira.js');
+    scripts.push('goldhen11.js');
+    scripts.push('netcat.js');
+    preloadScripts(scripts, go);
+}
+
+window.postExploit = function()
+{
+    history.pushState({}, '', '.');
+    setTimeout(function() //update the screen one last time...
+    {
+        eval.call(window, scriptCode);
+        done();
+    }, 100);
+};
+</script>
+<div id=dlog></div>
+<button style=opacity:0 id="input1" onfocus="handle2()"></button>
+<button style=opacity:0 id="input2"></button>
+<button style=opacity:0 id="input3" onfocus="handle2()"></button>
+<select style=opacity:0 id="select1">
+<option value="value1">Value1</option>
+</select>
+<script src="utils.js"></script>
+<script src="int64.js"></script>
+<script src="ps4.js"></script>
+</body>
+</html>
